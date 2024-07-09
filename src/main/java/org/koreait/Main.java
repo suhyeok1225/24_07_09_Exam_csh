@@ -58,9 +58,9 @@ public class Main {
                     for (int i = printMotivations.size() - 1; i >= 0; i--) {
                         Motivation motivation = motivations.get(i);
                         if (Util.getNow().split(" ")[0].equals(motivation.getRegDate().split(" ")[0])) {
-                            System.out.printf("   %d     /   %s   /   %s   /   %s  \n", motivation.getId(), motivation.getRegDate().split(" ")[1], motivation.getContent(), motivation.getAuthor());
+                            System.out.printf("   %d     /   %s   /   %s  \n", motivation.getId(), motivation.getContent(), motivation.getAuthor());
                         } else {
-                            System.out.printf("   %d     /   %s   /   %s   /   %s  \n", motivation.getId(), motivation.getRegDate().split(" ")[0], motivation.getContent(), motivation.getAuthor());
+                            System.out.printf("   %d     /   %s   /   %s  \n", motivation.getId(), motivation.getContent(), motivation.getAuthor());
                         }
                     }
                 }
@@ -74,13 +74,13 @@ public class Main {
                     }
                 }
                 if (foundMotivation == null) {
-                    System.out.println("해당 게시글은 없습니다");
+                    System.out.println("해당 명언은 없습니다");
                     continue;
                 }
                 System.out.println("번호 : " + foundMotivation.getId());
                 System.out.println("작성날짜 : " + foundMotivation.getRegDate());
-                System.out.println("제목 : " + foundMotivation.getContent());
-                System.out.println("내용 : " + foundMotivation.getAuthor());
+                System.out.println("명언 : " + foundMotivation.getContent());
+                System.out.println("작가 : " + foundMotivation.getAuthor());
             } else if (cmd.startsWith("삭제?id=")) {
 
                 int id = Integer.parseInt(cmd.split("=")[1]);
@@ -92,11 +92,11 @@ public class Main {
                     }
                 }
                 if (foundMotivation == null) {
-                    System.out.println("해당 게시글은 없습니다");
+                    System.out.println("해당 명언은 없습니다");
                     continue;
                 }
                 motivations.remove(foundMotivation);
-                System.out.println(id + "번 게시글이 삭제되었습니다");
+                System.out.println(id + "번 명언이 삭제되었습니다");
 
             } else if (cmd.startsWith("수정?id=")) {
                 int id = Integer.parseInt(cmd.split("=")[1]);
@@ -110,25 +110,25 @@ public class Main {
                     }
                 }
                 if (foundMotivation == null) {
-                    System.out.println("해당 게시글은 없습니다");
+                    System.out.println("해당 명언은 없습니다");
                     continue;
                 }
-                System.out.println("기존 제목 : " + foundMotivation.getContent());
-                System.out.println("기존 내용 : " + foundMotivation.getAuthor());
-                System.out.print("새 제목 : ");
+                System.out.println("명언(기존) : " + foundMotivation.getContent());
+                System.out.println("작가(기존) : " + foundMotivation.getAuthor());
+                System.out.print("명언 : ");
                 String newTitle = sc.nextLine();
-                System.out.print("새 내용 : ");
+                System.out.print("작가 : ");
                 String newBody = sc.nextLine();
 
                 foundMotivation.setContent(newTitle);
                 foundMotivation.setAuthor(newBody);
 
-                System.out.println(id + "번 게시글이 수정되었습니다");
+                System.out.println(id + "번 명언이 수정되었습니다");
             } else {
                 System.out.println("사용할 수 없는 명령어입니다");
             }
         }
-        System.out.println("==프로그램 종료==");
+        System.out.println("== 프로그램 종료 ==");
         sc.close();
     }
 }
